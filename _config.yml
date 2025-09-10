@@ -18,16 +18,16 @@ avatar: https://avatars.githubusercontent.com/u/63585800
 # and URL Link(e.g. 'Theme' tab below) tabs. If you don't need one, just delete
 # it from the list(Delete '- name: ' and 'url: ', too!)
 navigation:
-  - name: 首页
+  - name: Home
     url: /
-  - name: 关于
+  - name: About
     url: /about
-  - name: 归档
+  - name: Archive
     url: /archive
-  - name: 标签
+  - name: Tags
     url: /tags
-  - name: 友链
-    url: /flink
+  - name: Links
+    url: /links
 
 # Pagination
 paginate: 8
@@ -57,16 +57,23 @@ footer-links:
 # Text under the icons in footer
 footer-text: Copyright (c) 2019 - 2025 nullptr
 
-# Enter your Disqus shortname (not your username) to enable commenting on posts
-# You can find your shortname on the Settings page of your Disqus account
-disqus: # fromendworld
-
 # Gitalk
-gitalk:
-  clientID: 983026f654bb910123b0
-  clientSecret: bad23a884b79eced1ab26e9a7f8b9889b60f31ac
-  repo: gitalk-comments
-  owner: nullptr-0
+# See https://gitalk.github.io/
+# gitalk:
+#   clientID: 
+#   clientSecret: 
+#   repo: 
+#   owner: 
+
+# giscus
+# Generate your own giscus config at https://giscus.app/
+# Then copy the config parameters below
+giscus:
+  repo: nullptr-0/comments
+  repo_id: R_kgDOPtJ4xg
+  category: Announcements
+  category_id: DIC_kwDOPtJ4xs4CvOzB
+  mapping: pathname
 
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
 #google_analytics: 
