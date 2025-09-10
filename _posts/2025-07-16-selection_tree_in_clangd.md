@@ -7,8 +7,6 @@ comments: true
 author: nullptr
 ---
 
-# **Clangd中的SelectionTree：概述和实现**
-
 ## **SelectionTree在Clangd的Tweak系统中的作用**
 
 Clangd的**SelectionTree**是一个实用工具，用于将编辑器选择（或光标位置）映射到相应的AST节点。它被clangd的*Tweak*（code action）系统大量使用。当请求code action时，clangd会为请求的范围构建一个SelectionTree，并通过`Tweak::Selection`输入提供它。这允许每个 Tweak 快速确定光标或选择下的 AST 结构，而无需编写自己的 AST 遍历<sup>1,2</sup> 。在实践中，Tweak的`prepare()`方法将检查SelectionTree（通常通过`commonAncestor()`或通过导航父/子节点）以确定该作是否适用。例如，*MemberwiseConstructor* 调整通过获取公共祖先并查看它是否为`CXXRecordDecl`来检查所选内容是否在C++类定义内<sup>3</sup>。同样，*ExpandDeducedType*调整在选择下查找AutoTypeLoc<sup>4</sup>。这种设计将“what's under the cursor？”逻辑集中在SelectionTree中，因此单个Tweak（以及其他功能，如go-to-definition或hover）不需要自定义 AST 搜索<sup>1</sup>。

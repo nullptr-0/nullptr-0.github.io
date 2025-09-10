@@ -7,8 +7,6 @@ comments: true
 author: nullptr
 ---
 
-# 机器学习中的层规范化（及PyTorch示例）
-
 > 机器学习中层规范化的快速介绍，以及PyTorch示例代码。
 
 ## 导语
