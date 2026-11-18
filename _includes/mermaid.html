@@ -1,0 +1,21 @@
+<script type="module">
+  const codeBlocks = document.querySelectorAll('.language-mermaid');
+  const existingDiagrams = document.querySelectorAll('.mermaid');
+
+  // Other pages avoid downloading Mermaid entirely.
+  if (codeBlocks.length || existingDiagrams.length) {
+    const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/mermaid.esm.min.mjs');
+
+    codeBlocks.forEach(block => {
+      if (!block.isConnected) return;
+
+      const diagram = document.createElement('pre');
+      diagram.className = 'mermaid';
+      diagram.textContent = block.textContent;
+      (block.closest('.highlighter-rouge') || block.closest('pre') || block).replaceWith(diagram);
+    });
+
+    mermaid.initialize({ startOnLoad: false });
+    await mermaid.run();
+  }
+</script>
